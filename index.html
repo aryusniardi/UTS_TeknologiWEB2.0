@@ -1,0 +1,121 @@
+<DOCTYPE html>
+
+    <head>
+        <script src="lib/vue.js"></script>
+        <script src="lib/vuex.js"></script>
+        <title>Pertemuan - 8</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/mdb.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        
+        <div id="app">
+        </div>
+
+        <script type="module">
+            import { navbar } from './js/components/navbar.js';
+
+            // Pengambilan data menggunakan API
+            var store = new Vuex.Store({
+                strict: true,
+                state: {
+                    items: []
+                },
+                mutations: {
+                    setItems(state, items) {
+                        state.items = items
+                    }
+                },
+                actions: {
+                    getItems({commit}) {
+                        return new Promise((resolve, reject) => {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("GET", "https://api.jsonbin.io/b/5e8f1aef8e85c84370131ea8");
+                            xhr.onload = function () {
+                                if (this.status >= 200 && this.status < 300) {
+                                    commit('setItems', JSON.parse(xhr.response))
+                                    resolve(xhr.response)
+                                } else {
+                                    reject({
+                                        status: this.status,
+                                        statusText: xhr.statusText
+                                    });
+                                }
+                            };
+                            xhr.onerror = function () {
+                                reject({
+                                    status:this.status, 
+                                    statusText: xhr.statusText
+                                })
+                            };
+                            xhr.send()
+                        })
+                    }
+                },
+                getters: {
+                    items: state => state.items
+                }
+            })
+            
+            new Vue({
+                el: '#app',
+                store,
+                components: {
+                    'navbar' : navbar
+                },
+                computed: {
+                    items() {
+                        return store.getters.items
+                    }
+                },
+                created() {
+                    store.dispatch('getItems').then((response)=> {
+                        console.log('result', response)
+                    }).catch((error)=> {
+                        console.log('error', error)
+                    })
+                },
+                template: `
+                <div>
+                    <navbar></navbar>
+                    <div class="p-5 container">
+                        <div class="text-center mb-4 pt-2">
+                            <div class="row wow fadeIn">
+                                <div v-for="item of items" class="col-lg-3 col-md-6 mb-4 d-flex">
+                                    <!-- Looping mengambil data item yang dihasilkan dari filter berdasarkan keyword -->
+                                    <div class="card">
+                                        <div class="view overlay">
+                                            <img :src="'img/items/' + item.image" class="card-img-top img-fluid">
+                                            <!-- Menampilkan data image yang ada pada item-->
+                                            <div class="mask rgba-white-slight"></div>
+                                        </div>
+
+                                        <div class="card-body text-center">
+                                            <a href="" class="grey-text">
+                                                <h5>Shoes</h5>
+                                            </a>
+                                            <h5>
+                                                <strong>
+                                                    <p href="" class="dark-grey-text">{{item.name}} </p>
+                                                    <!-- Menampilkan data name yang ada pada item -->
+                                                </strong>
+                                            </h5>
+                                            <h4 class="font-weight-bold blue-text">
+                                                <strong>{{item.price}}</strong>
+                                                <!-- Menampilkan data price yang ada pada item -->
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+            });
+        </script>
+    </body>
+
+    </html>
