@@ -1,33 +1,57 @@
-option {
-    font-weight: normal;
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.nav-pills .nav-link,
+.nav-pills .show>.nav-link {
+  font-size: 3vh;
+  color: #323232;
+  width: 25%;
+}
+
+.cool-link {
+    display: inline-block;
+    color: #1c13a0;
+    text-decoration: none;
+}
+
+.cool-link::after {
+    content: '';
     display: block;
-    white-space: pre;
-    min-height: 1.2em;
-    padding: 0px 2px 1px;
-    color: #bdbdbd;
-    background-color: white;
+    width: 0;
+    height: 2px;
+    background: #1c13a0;
+    transition: width .3s;
 }
 
-.button-rounded {
-    border-radius: 20rem;
+.cool-link:hover::after {
+    width: 3.5vw;
+    transition: width .3s;
 }
 
-body.modal-open {
-    overflow: auto;
+.p-responsive {
+    font-size: 1.5vw !important;
 }
 
-.modal.in {
-    pointer-events: none;
+.h-responsive {
+    font-size: 2.5vw !important;
 }
 
-.modal-content {
-    pointer-events: all;
+.router-link-active {
+    font-weight: bold;
 }
 
-.modal-backdrop {
-    display: none;
-}
-
-.bg-img {
-    background-color: #EBECEE;
+.router-link-active .p-responsive {
+    color: #1c13a0 !important;
+    font-weight: 900;
 }
