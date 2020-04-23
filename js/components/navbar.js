@@ -10,42 +10,50 @@ export var navbar = {
         };
     },
     template: `
-    <div>
-        <nav class="navbar z-depth-0 px-5 py-3">
-            <div class="container">
-                <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="h1 text-dark font-weight-bold h-responsive" href="#">
-                        <span><img src="../assets/logo.png" height="60vw"/></span> Watch's Store
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="container">
-            <nav class="nav nav-pills nav-fill px-5">
-                <li :class="[currentPage.includes('home') ? activeClass : 'active', 'nav-item']">
+    <nav class="navbar navbar-expand-md navbar-light navbar-transparent px-3 py-4 z-depth-0">
+        <div class="container-fluid">
+            <a class="h1 text-dark font-weight-bold h-responsive" href="#">
+                <span><img src="../assets/logo.png" height="40vw"/></span> 
+                Watch's Store
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ml-auto">
+                <li :class="[currentPage.includes('home') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/home">
-                        <p class="nav-link cool-link p-responsive">Home</p>
+                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                            Home
+                        </p>
                     </router-link>
                 </li>
-                <li :class="[currentPage.includes('home') ? activeClass : '', 'nav-item']">
+                <li :class="[currentPage.includes('brand') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/brand">
-                        <p class="nav-item nav-link cool-link p-responsive">Brand</p>
+                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                            Brand
+                        </p>
                     </router-link>
                 </li>
-                <li :class="[currentPage.includes('home') ? activeClass : '', 'nav-item']">
+                <li :class="[currentPage.includes('collection') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/collection">
-                        <p class="nav-item nav-link cool-link p-responsive">Collection</p>
+                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                            Collection
+                        </p>
                     </router-link>
                 </li>
-                <li :class="[currentPage.includes('home') ? activeClass : '', 'nav-item']">
+                <li :class="[currentPage.includes('home') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/blog">
-                        <p class="nav-item nav-link cool-link p-responsive">Blog</p>
+                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                            blog
+                        </p>
                     </router-link>
                 </li>
-            </nav>
+            </ul>
+            </div>
         </div>
-    </div>
+    </nav>
     `
 }

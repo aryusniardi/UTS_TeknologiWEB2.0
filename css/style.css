@@ -35,12 +35,13 @@
 }
 
 .cool-link:hover::after {
-    width: 3.5vw;
+    width: 100%;
     transition: width .3s;
 }
 
 .p-responsive {
-    font-size: 1.5vw !important;
+    font-size: 2.5vh !important;
+    margin: 0 1vw;
 }
 
 .h-responsive {
