@@ -1,0 +1,16 @@
+1 category // home page
+id, category, image, descripton
+link : https://api.jsonbin.io/b/5ea111de1299b937423493ee
+note : categori : Analog Watch, Digital Watch, Automatic watch
+
+2. brand // brand page
+id, brand, image, description
+link : https://api.jsonbin.io/b/5ea106ff98b3d5375232f596
+note : brand : Casio, Hublot, Fossil, TAG Heuer, Seiko, Rolex, Patek Philippe
+
+3. product // collection page
+id, category, brand, name,image, price, description, stock
+link : https://api.jsonbin.io/b/5ea11d1a1299b937423497b9
+
+4. blog // blog pagecas
+id, title, image, description
