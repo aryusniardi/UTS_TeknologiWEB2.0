@@ -29,6 +29,7 @@
         <script type="module">
             import { navbar } from './js/components/navbar.js';
             import { collection } from './js/components/pages/collections.js';
+            import { product } from './js/components/pages/product.js';
 
             const home = {template: `<h1>Homes</h1>`};
             const brand = {template: `<h1>Brands</h1>`};
@@ -39,6 +40,9 @@
                 {path: '/brand', component: brand},
                 {path: '/collection', component: collection},
                 {path: '/blog', component: blog},
+                {path: '/product/:id', component: product, props:true},
+                {path: '*', redirect: '/'}
+
             ];
 
             const router = new VueRouter({routes});

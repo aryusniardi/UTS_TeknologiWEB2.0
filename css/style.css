@@ -2,6 +2,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.main-color{
+    color: #1c13a0;
+}
+
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.5s;
@@ -66,4 +70,96 @@
     height: 15vw;
     object-fit: contain;
     
+}
+
+.sidebar-categories .head {
+    line-height: 60px;
+    background: #323232;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.sidebar-categories .main-categories {
+    padding: 0 20px;
+    background: #fff;
+    box-shadow: 0 10px 10px rgba(153, 153, 153, 0.1);
+}
+
+.sidebar-categories .main-nav-list a {
+    font-size: 14px;
+    display: block;
+    line-height: 50px;
+    padding-left: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-categories .main-nav-list a:hover {
+    color: #ffba00;
+}
+
+.sidebar-categories .main-nav-list a .number {
+    color: #cccccc;
+    margin-left: 10px;
+}
+
+.sidebar-categories .main-nav-list a .lnr {
+    margin-right: 10px;
+    display: none;
+}
+
+.sidebar-categories .main-nav-list.child a {
+    padding-left: 32px;
+}
+
+.sidebar-filter {
+    margin-top: 50px;
+}
+
+.sidebar-filter .top-filter-head {
+    line-height: 60px;
+    background: #323232;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.sidebar-filter .head {
+    line-height: 60px;
+    padding: 0 30px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222222;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.sidebar-filter .common-filter {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+}
+
+.sidebar-filter .common-filter .filter-list {
+    position: relative;
+    padding-left: 28px;
+}
+
+.filter-list {
+    line-height: 30px;
+}
+
+.filter-list i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.filter-list .number {
+    color: #ccc;
+}
+
+.filter-list label {
+    margin-bottom: 3px;
+    cursor: pointer;
 }

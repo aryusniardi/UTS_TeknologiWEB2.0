@@ -12,11 +12,12 @@ export var navbar = {
     template: `
     <nav class="navbar navbar-expand-md navbar-light navbar-transparent px-3 py-4 z-depth-0">
         <div class="container-fluid">
-            <a class="h1 text-dark font-weight-bold h-responsive" href="#">
-                <span><img src="../assets/logo.png" height="40vw"/></span> 
-                Watch's Store
-            </a>
-
+            <router-link to="/">
+                <p class="h1 text-dark font-weight-bold h-responsive">
+                    <span><img src="../assets/logo.png" height="40vw"/></span> 
+                    Watch's Store
+                </p>
+            </router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
