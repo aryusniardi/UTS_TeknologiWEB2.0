@@ -163,3 +163,87 @@
     margin-bottom: 3px;
     cursor: pointer;
 }
+
+.masthead {
+    padding-top: 5rem;
+    padding-bottom: calc(10rem - 56px);
+    background-position: center center;
+    background-size: cover;
+}
+
+header.masthead hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+header.masthead h1 {
+    font-size: 2rem;
+}
+
+header.masthead p {
+    font-weight: 300;
+}
+
+a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+    color: inherit;
+    text-decoration: none;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+button, html [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+a.waves-effect, a.waves-light {
+    display: inline-block;
+}
+a:not([href]) {
+    color: inherit;
+    text-decoration: none;
+}
+.btn-floating {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0;
+    margin: 10px;
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    width: 47px;
+    height: 47px;
+}
+
+.btn-floating i {
+    display: inline-block;
+    width: inherit;
+    color: #fff;
+    text-align: center;
+}
+
+.btn-floating i {
+    font-size: 1.25rem;
+    line-height: 47px;
+}
+
+.waves-effect {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-item-produce img {
+    object-fit: cover;
+}

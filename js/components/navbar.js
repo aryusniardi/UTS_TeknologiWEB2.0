@@ -26,28 +26,28 @@ export var navbar = {
             <ul class="navbar-nav ml-auto">
                 <li :class="[currentPage.includes('home') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/home">
-                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                        <p class="nav-link waves-effect p-responsive cool-link">
                             Home
                         </p>
                     </router-link>
                 </li>
                 <li :class="[currentPage.includes('brand') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/brand">
-                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                        <p class="nav-link waves-effect p-responsive cool-link">
                             Brand
                         </p>
                     </router-link>
                 </li>
                 <li :class="[currentPage.includes('collection') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/collection">
-                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                        <p class="nav-link waves-effect p-responsive cool-link">
                             Collection
                         </p>
                     </router-link>
                 </li>
                 <li :class="[currentPage.includes('home') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/blog">
-                        <p class="nav-link waves-effect p-responsive cool-link text-center">
+                        <p class="nav-link waves-effect p-responsive cool-link">
                             blog
                         </p>
                     </router-link>

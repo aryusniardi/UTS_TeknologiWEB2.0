@@ -9,7 +9,7 @@ link : https://api.jsonbin.io/b/5ea106ff98b3d5375232f596
 note : brand : Casio, Hublot, Fossil, TAG Heuer, Seiko, Rolex, Patek Philippe
 
 3. product // collection page
-id, category, brand, name,image, price, description, stock
+id, category, brand, name, image, price, description, stock
 link : https://api.jsonbin.io/b/5ea11d1a1299b937423497b9
 
 4. blog // blog pagecas

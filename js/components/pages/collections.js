@@ -133,7 +133,14 @@ export var collection = {
         return {
             keyword: '',
             ctg: '',
-            select: ''
+            select: '',
+            perPage: 10,
+            currentPage: 1,
+        }
+    },
+    methods: {
+        onChangePage(pageOfItems) {
+            this.pageOfItems = pageOfItems;
         }
     },
     computed: {
@@ -154,6 +161,9 @@ export var collection = {
             return this.items.filter(item => {
                 return item.name.toLowerCase().includes(this.keyword.toLowerCase())
             })
+        },
+        rows() {
+            return this.filteredItems.length
         }
     },
     created() {
@@ -237,6 +247,21 @@ export var collection = {
                             </div>
                         </div>
                     </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination d-flex justify-content-center pg-dark text-center">
+                            <li class="page-item ">
+                                <a class="page-link" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link">1</a></li>
+                            <li class="page-item active">
+                                <a class="page-link">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link">3</a></li>
+                            <li class="page-item ">
+                                <a class="page-link">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </section>
             </div>
         </div>

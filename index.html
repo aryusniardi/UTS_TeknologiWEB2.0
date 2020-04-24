@@ -29,6 +29,7 @@
         <script type="module">
             import { navbar } from './js/components/navbar.js';
             import { collection } from './js/components/pages/collections.js';
+            import { brands } from './js/components/pages/brands.js';
             import { product } from './js/components/pages/product.js';
             import { home } from './js/components/pages/home.js';
 
@@ -38,7 +39,7 @@
 
             const routes = [
                 {path: '/', component: home, alias: '/home'},
-                {path: '/brand', component: brand},
+                {path: '/brand', component: brands},
                 {path: '/collection', component: collection},
                 {path: '/blog', component: blog},
                 {path: '/product/:id', component: product, props:true},
