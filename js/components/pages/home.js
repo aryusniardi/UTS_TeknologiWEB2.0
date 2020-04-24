@@ -1,20 +1,20 @@
 var store_home = new Vuex.Store({
-	strict: true,
-	state: {
-		items:[],
-	},
-	mutations: {
-		setItems(state, items){
-			state.items = items
-		}
-	},
-	actions: {
-		getItems({commit}){
-			return new Promise((resolve, reject)=> {
-				var xhr = new XMLHttpRequest();
-				xhr.open("GET","https://api.jsonbin.io/b/5ea111de1299b937423493ee");
-				xhr.onload = function(){
-					if (this.status >= 200 && this.status < 300) {
+    strict: true,
+    state: {
+        items:[],
+    },
+    mutations: {
+        setItems(state, items){
+            state.items = items
+        }
+    },
+    actions: {
+        getItems({commit}){
+            return new Promise((resolve, reject)=> {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET","https://api.jsonbin.io/b/5ea111de1299b937423493ee/1");
+                xhr.onload = function(){
+                    if (this.status >= 200 && this.status < 300) {
                         commit('setItems', JSON.parse(xhr.response))
                         resolve(xhr.response)
                     } else {
@@ -23,35 +23,35 @@ var store_home = new Vuex.Store({
                             statusText: xhr.statusText
                         });
                     }
-				};
-				xhr.onerror = function () {
+                };
+                xhr.onerror = function () {
                     reject({
                         status: this.status,
                         statusText: xhr.statusText
                     })
                 };
                 xhr.send()
-			})
-		}
-	},
-	getters: {
+            })
+        }
+    },
+    getters: {
         items: state => state.items
     }
 })
 
 export var home = {
-	store_home,
-	data(){
-		return {
-			keyword: '',
-		}
-	},
-	computed: {
-		items() {
+    store_home,
+    data(){
+        return {
+            keyword: '',
+        }
+    },
+    computed: {
+        items() {
             return store_home.getters.items;
         }
-	},
-	created() {
+    },
+    created() {
         store_home.dispatch('getItems').then((response) => {
             console.log('result', response)
         }).catch((error) => {
@@ -59,8 +59,8 @@ export var home = {
         })
     },
     template: `
-    			<div>
-    			<section id="best-features" class="text-center">
+                <div>
+                <section id="best-features" class="text-center">
 
                 <!-- Heading -->
                 <h2 class="mb-5 font-weight-bold">Best Features</h2>
@@ -99,6 +99,43 @@ export var home = {
                 <!--Grid row-->
 
             </section>
-    			</div>
+
+            <hr class="my-5">
+
+            <!--Section: Gallery-->
+            <section id="gallery">
+
+                <!-- Heading -->
+                <h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
+
+                <!--Grid row-->
+                <div class="row" v-for="item of items">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-4">
+                      <img class="d-block w-100 rounded" :src="'assets/image/category/'+ item.image2">
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+
+                        <!--Excerpt-->
+                        <a href="" class="teal-text">
+                            <h6 class="pb-1"><i class="fa fa-heart"></i><strong> Lifestyle </strong></h6>
+                        </a>
+                        <h4 class="mb-3"><strong>{{item.category}}</strong></h4>
+                        <p class="grey-text">{{item.description}}.</p>
+                        <!--<a class="btn btn-primary btn-md">Read more</a>-->
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Gallery-->
+                </div>
     `
 }
