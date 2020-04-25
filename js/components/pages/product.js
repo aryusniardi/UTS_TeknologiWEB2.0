@@ -58,6 +58,9 @@ export const product = {
             })
         }
     },
+    methods: {
+        
+    },
     created() {
         store.dispatch('getItems').then((response) => {
             // console.log('result', response)
@@ -96,7 +99,7 @@ export const product = {
                     <div class="modal-header">
                         <h1 class="modal-title font-weight-bold" id="exampleModalLongTitle">Pembayaran</h1>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -128,7 +131,7 @@ export const product = {
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark w-100 mx-4">Checkout</button>
+                        <button type="button" class="btn btn-dark w-100 mx-4" data-dismiss="modal" aria-label="Close">Checkout</button>
                     </div>
                 </div>
             </div>

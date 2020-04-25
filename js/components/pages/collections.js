@@ -134,8 +134,9 @@ export var collection = {
             keyword: '',
             ctg: '',
             select: '',
-            perPage: 10,
-            currentPage: 1,
+            page: 1,
+            perPage: 9,
+            pages: [],
         }
     },
     methods: {
@@ -154,16 +155,45 @@ export var collection = {
             return category.getters.categories;
         },
         filteredItems() {
-            var currentItems = [];
+            var currentItems = store.getters.items;
             var cat = this.ctg; // Category
             var select = this.select; // Brands
-            
-            return this.items.filter(item => {
+            console.log(cat);
+            console.log(select)
+
+            if (cat !== '') {
+                currentItems = currentItems.filter(item => {
+                    return item.category.toLowerCase() === cat.toLowerCase()
+                })
+            }
+
+            if (select !== '') {
+                currentItems = currentItems.filter(item=> {
+                    return item.brand.toLowerCase() === select.toLowerCase()
+                })
+            }
+
+            return currentItems.filter(item => {
                 return item.name.toLowerCase().includes(this.keyword.toLowerCase())
             })
         },
-        rows() {
-            return this.filteredItems.length
+        displayedItems() {
+            return this.paginate(this.filteredItems)
+        }        
+    },
+    methods: {
+        setPages() {
+            let numberOfPages = Math.ceil(this.items.length / this.perPage);
+            for (let index = 1; index <= numberOfPages; index ++) {
+                this.pages.push(index)
+            }
+        },
+        paginate(filteredItems) {
+            let page = this.page;
+            let perPage = this.perPage;
+            let from = (page * perPage) - perPage;
+            let to = (page * perPage);
+            return filteredItems.slice(from, to);
         }
     },
     created() {
@@ -182,6 +212,11 @@ export var collection = {
         }).catch((error) => {
             console.log('error', error)
         });
+    },
+    watch: {
+        filteredItems() {
+            this.setPages();
+        }
     },
     template: `
     <div>
@@ -225,7 +260,7 @@ export var collection = {
             <div class="col-md-9">
                 <section class="text-center mb-4">
                     <div class="row wow fadeIn">
-                        <div v-for="item of filteredItems" class="col-lg-4 col-md-6 col-sm-6 mt-4 d-flex align-items-stretch">
+                        <div v-for="item of displayedItems" class="col-lg-4 col-md-6 col-sm-6 mt-4 d-flex align-items-stretch">
                             <div>
                                 <div class="view view-cascade overlay">
                                     <img :src="'assets/image/product/' + item.image" class="card-img-top" style="display: cover" alt="">
@@ -250,15 +285,11 @@ export var collection = {
                     <nav aria-label="Page navigation example">
                         <ul class="pagination d-flex justify-content-center pg-dark text-center">
                             <li class="page-item ">
-                                <a class="page-link" tabindex="-1">Previous</a>
+                                <a class="page-link" tabindex="-1" v-if="page != 1" @click="page--">Previous</a>
                             </li>
-                            <li class="page-item"><a class="page-link">1</a></li>
-                            <li class="page-item active">
-                                <a class="page-link">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link">3</a></li>
+                            <li class="page-item" v-for="pageNumber in pages.slice(page-1, page+5)"><a class="page-link" @click="page = pageNumber">{{pageNumber}}<span class="sr-only">(current)</span></a></li>
                             <li class="page-item ">
-                                <a class="page-link">Next</a>
+                                <a class="page-link" v-if="page < pages.length" @click="page++">Next</a>
                             </li>
                         </ul>
                     </nav>

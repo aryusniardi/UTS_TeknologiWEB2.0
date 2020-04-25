@@ -127,9 +127,10 @@ export var brands = {
             <div class="jumbotron text-center z-depth-0" v-for="brand of brands">
                 <img :src="'assets/image/brand/' + brand.image" class="rounded mx-auto d-block card-img-top" alt="brand">
                 <p class="text-justify">{{brand.description}}</p>
-                <a class="btn-floating bg-dark waves-effect waves-light text-white">
-                    <input type="radio" data-toggle="collapse" v-model="brd" :value="brand.brand" :data-target="['#example' + brand.id]" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-angle-down"></i></input>
-                </a>
+                <label>
+                    <input class="" type="radio" data-toggle="collapse" v-model="brd" :value="brand.brand" :data-target="['#example' + brand.id]" aria-expanded="false" aria-controls="collapseExample" checked></input>
+                    <img src="assets/drop-down.png" style="heght: 5vh; width: 5vh">
+                </label>
 
                 <div class="collapse" :id="['example' + brand.id]">
                     <div class="carousel slide carousel-multi-item" data-ride="carousel">
