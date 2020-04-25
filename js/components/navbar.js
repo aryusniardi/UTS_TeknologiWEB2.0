@@ -48,7 +48,7 @@ export var navbar = {
                 <li :class="[currentPage.includes('home') ? activeClass : 'nav-item .active', 'nav-item']">
                     <router-link to="/blog">
                         <p class="nav-link waves-effect p-responsive cool-link">
-                            blog
+                            Blog
                         </p>
                     </router-link>
                 </li>

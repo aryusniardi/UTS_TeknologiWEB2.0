@@ -263,4 +263,10 @@ a:not([href]) {
 
 /* CHECKED STYLES */
 [type=radio]:checked+img {
+
+}
+
+.button-for-quantity {
+    height: 5vh;
+    width: 5vh
 }

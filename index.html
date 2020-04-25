@@ -28,10 +28,11 @@
 
         <script type="module">
             import { navbar } from './js/components/navbar.js';
-            import { collection } from './js/components/pages/collections.js';
-            import { brands } from './js/components/pages/brands.js';
-            import { product } from './js/components/pages/product.js';
             import { home } from './js/components/pages/home.js';
+            import { brands } from './js/components/pages/brands.js';
+            import { collection } from './js/components/pages/collections.js';
+            import { product } from './js/components/pages/product.js';
+            import { payment } from './js/components/pages/payment.js';
 
             //const home = {template: `<h1>Homes</h1>`};
             const brand = {template: `<h1>Brands</h1>`};
@@ -43,6 +44,7 @@
                 {path: '/collection', component: collection},
                 {path: '/blog', component: blog},
                 {path: '/product/:id', component: product, props:true},
+                {path: '/payment/:id', component: payment, props:true},
                 {path: '*', redirect: '/'}
 
             ];

@@ -10728,7 +10728,8 @@ body.scrollable {
 .md-form input[type="phone"]:not(.browser-default):focus:not([readonly])+label,
 .md-form input[type="search-md"]:focus:not([readonly])+label,
 .md-form textarea.md-textarea:focus:not([readonly])+label {
-    color: #4285f4
+    color: #323232;
+    font-weight: 700;
 }
 
 .md-form input:not([type])+label::after,

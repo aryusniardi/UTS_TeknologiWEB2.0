@@ -194,7 +194,7 @@ export var collection = {
             let from = (page * perPage) - perPage;
             let to = (page * perPage);
             return filteredItems.slice(from, to);
-        }
+        },
     },
     created() {
         store.dispatch('getItems').then((response) => {

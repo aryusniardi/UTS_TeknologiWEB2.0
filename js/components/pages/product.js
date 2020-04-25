@@ -6,7 +6,7 @@ var store = new Vuex.Store({
     mutations: {
         setItems(state, items) {
             state.items = items
-        }
+        },
     },
     actions: {
         getItems({
@@ -37,7 +37,7 @@ var store = new Vuex.Store({
         }
     },
     getters: {
-        items: state => state.items
+        items: state => state.items,
     }
 })
 
@@ -45,21 +45,20 @@ export const product = {
     store,
     props: ['id'],
     computed: {
+        items() {
+            return store.getters.items;
+        },
         item() {
             var prod_id = this.id - 1;
-            console.log(prod_id)
-
-            let product = store.getters.items[prod_id];
+            var product = store.getters.items[prod_id];
             return product
         },
-        total() {
-            return this.item.filter(item => {
-                return item.price
-            })
-        }
     },
     methods: {
-        
+        formatPrice(value) {
+            let val = (value / 1).toFixed(2).replace('.', ',')
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        },
     },
     created() {
         store.dispatch('getItems').then((response) => {
@@ -67,7 +66,6 @@ export const product = {
         }).catch((error) => {
             console.log('error', error)
         });
-        
     },
     template: `
     <div v-if="item" class="py-4">
@@ -83,56 +81,14 @@ export const product = {
                     <h1 class="font-weight-bold h-1 py-3">{{item.name}}
                         <p class="px-4 text-justify h6">{{item.brand}}, {{item.category}}</p>
                     </h1>
-                    <h3 class="px-4 main-color font-weight-bold">{{item.price}}</h3>
+                    <h3 class="px-4 main-color font-weight-bold">Rp. {{formatPrice(item.price)}}</h3>
                     <h4 class="px-4 mt-4 font-weight-bold">Description</h4>
                     <p class="px-4 text-justify">{{item.description}}</p>
-                    <button type="button" class="px-4 mt-4 btn btn-dark w-100 font-weight-bold" data-toggle="modal" data-target="#exampleModalCenter">
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title font-weight-bold" id="exampleModalLongTitle">Pembayaran</h1>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                    <router-link :to="'/payment/' + item.id">
+                        <button type="button" class="px-4 mt-4 btn btn-dark w-100 font-weight-bold" data-toggle="modal" data-target="#exampleModalCenter">
+                            Add to Cart
                         </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td>Nama </td>
-                                    <td>{{item.name}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Brand</td>
-                                    <td>{{item.brand}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Category</td>
-                                    <td>{{item.category}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Price</td>
-                                    <td>{{
-                                        item.price
-                                    }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Quantity</td>
-                                    <td>1</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-dark w-100 mx-4" data-dismiss="modal" aria-label="Close">Checkout</button>
-                    </div>
+                    </router-link>
                 </div>
             </div>
         </div>
