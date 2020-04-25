@@ -14,7 +14,7 @@ var brand = new Vuex.Store({
         }) {
             return new Promise((resolve, reject) => {
                 var xhr = new XMLHttpRequest();
-                xhr.open("GET", "https://api.jsonbin.io/b/5ea106ff98b3d5375232f596");
+                xhr.open("GET", "https://api.jsonbin.io/b/5ea106ff98b3d5375232f596/1");
                 xhr.onload = function () {
                     if (this.status >= 200 && this.status < 300) {
                         commit('setBrands', JSON.parse(xhr.response))
@@ -57,7 +57,7 @@ var store = new Vuex.Store({
         }) {
             return new Promise((resolve, reject) => {
                 var xhr = new XMLHttpRequest();
-                xhr.open("GET", "https://api.jsonbin.io/b/5ea11d1a1299b937423497b9/1");
+                xhr.open("GET", "https://api.jsonbin.io/b/5ea11d1a1299b937423497b9/2");
                 xhr.onload = function () {
                     if (this.status >= 200 && this.status < 300) {
                         commit('setItems', JSON.parse(xhr.response))

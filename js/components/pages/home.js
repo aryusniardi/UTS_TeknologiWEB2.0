@@ -53,7 +53,7 @@ var colletion = new Vuex.Store( {
         getCollections({commit}) {
             return new Promise((resolve, reject) => {
                 var xhr = new XMLHttpRequest();
-                xhr.open("GET", "https://api.jsonbin.io/b/5ea11d1a1299b937423497b9/1");
+                xhr.open("GET", "https://api.jsonbin.io/b/5ea11d1a1299b937423497b9/2");
                 xhr.onload = function () {
                     if (this.status >= 200 && this.status < 300) {
                         commit('setCollections', JSON.parse(xhr.response))
