@@ -139,7 +139,7 @@ export var blog = {
       </div>
       <div class="col-md-4">
         <div class="card my-4">
-          <h5 class="card-header">BUY or DIE</h5>
+          <h5 class="card-header">TOP Watch</h5>
           <div class="card-body">
                 <div v-for="colletion of filteredCollections">
                             <div>
