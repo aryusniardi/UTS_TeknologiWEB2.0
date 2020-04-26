@@ -127,12 +127,7 @@ export var home = {
                     <div class="col-md-8">
 
                         <!-- Description -->
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate
-                            hic
-                            provident nulla repellat
-                            facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis
-                            est
-                            sit pariatur.</p>
+                        <p class="grey-text">You can’t keep today’s hour for tomorrow – we all know that, but still tend to procrastinate. Benjamin Franklin warns that time is a scarce resource, and if it’s wasted, it cannot be recovered later. This is why mindful planning and work on productivity are so important.</p>
 
                     </div>
                     <!--Grid column-->
