@@ -97,7 +97,7 @@ export var home = {
             return colletion.getters.colletions;
         },
         filteredCollections: function(){
-            return this.colletions.slice(0,8)
+            return this.colletions.slice(0,4)
         }
     },
     created() {
@@ -181,7 +181,7 @@ export var home = {
                             <h6 class="pb-1"><i class="fa fa-heart"></i><strong> Lifestyle </strong></h6>
                         </a>
                         <h4 class="mb-3"><strong>{{item.category}}</strong></h4>
-                        <p class="grey-text">{{item.description}}.</p>
+                        <p class="grey-text text-justify">{{item.description}}.</p>
                         <!--<a class="btn btn-primary btn-md">Read more</a>-->
 
                     </div>
@@ -204,6 +204,16 @@ export var home = {
                             <div>
                                 <div class="view view-cascade overlay">
                                     <img :src="'assets/image/product/' + colletion.image" class="card-img-top" style="display: cover" alt="">
+                                    <router-link :to="'/product/' + colletion.id">
+                                        <div class="mask rgba-white-strong">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-md-6" style="color: #323232">
+                                                    <i class="fas fa-search pt-5" style="font-size: 4.5vw !important"></i>
+                                                    <h1 class="p-2 h-responsive">Detail</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </router-link>
                                 </div>
                                 <div class="card-body text-center">
                                     <h4 class="card-title"><strong>{{colletion.brand}}</strong></h4>
