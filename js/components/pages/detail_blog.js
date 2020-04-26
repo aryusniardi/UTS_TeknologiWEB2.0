@@ -1,5 +1,5 @@
 var store_detail_blog = new Vuex.Store({
-	strict: true,
+    strict: true,
     state: {
         blogs:[],
     },
@@ -40,9 +40,9 @@ var store_detail_blog = new Vuex.Store({
 })
 
 export const detail_blog = {
-	store_detail_blog,
-	props : ['id'],
-	computed: {
+    store_detail_blog,
+    props : ['id'],
+    computed: {
         blogs() {
             return store_detail_blog.getters.blogs;
         },
@@ -52,54 +52,95 @@ export const detail_blog = {
             return detail_blog
         },
     },
-	created(){
-		store_detail_blog.dispatch('getBlogs').then((response) => {
-           	console.log('result', response)
-     	}).catch((error) => {
-         	console.log('error', error)
-       	})
-	},
-	template : `
-		<div>
-        <div class="row">
-            <div class="col-md-3">
-                <section>
-                    <section>
-                        <h5 class="pt-2 mb-4 font-weight-bold">Filters</h5>
-                        <section class="mb-4">
-                            <div class="sidebar-filter">
-                                <div class="sidebar-categories">
-                                    <div class="head text-white">Categories</div>
-                                    <div v-for="bg of blogs">
-                                        <router-link :to="'/detail_blog/' + bg.id">
-                                            <img class="d-block w-100 rounded" :src="'assets/image/blog/'+ bg.image">
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
-                </section>
-            </div>
-            
-            <div class="col-md-9">
-                <section class="text-center mb-4">
-                    <div class="row wow fadeIn">
-                        <div class="col-lg-4 col-md-6 col-sm-6 mt-4 d-flex align-items-stretch">
-                            <div>
-                                <div class="view view-cascade overlay">
-                                    <div v-if="blog" class="py-4">
-                                        {{ blog.tittle}}
-                                    </div>    
+    created(){
+        store_detail_blog.dispatch('getBlogs').then((response) => {
+            console.log('result', response)
+        }).catch((error) => {
+            console.log('error', error)
+        })
+    },
+    template : `
+        <div>
+            <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8" v-if="blog">
+
+        <!-- Title -->
+        <h1 class="mt-4">{{ blog.tittle }}</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">{{ blog.author }}</a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on {{ blog.date }}</p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="d-block w-100 rounded" :src="'assets/image/blog/'+ blog.image" alt="Card image cap">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">{{ blog.content1 }}</p>
+
+        <p class="text-justify">{{ blog.content2 }}</p>
+
+        <hr>
+
+        <img class="d-block w-100 rounded" :src="'assets/image/blog/'+ blog.image2" alt="Card image cap">
+
+        <hr>
+
+        <p class="text-justify">{{ blog.content3}}</p>
+
+        <p class="text-justify">{{ blog.content4}}</p>
+
+        <hr>
+
+      </div>
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group" v-for="bg of blogs">
+                <div class="view view-cascade overlay">
+                    <router-link :to="'/detail_blog/' + bg.id">
+                      <img class="d-block w-100 rounded" :src="'assets/image/blog/'+ bg.image">
+                                     <router-link :to="'/detail_blog/' + bg.id">
+                                        <div class="mask rgba-white-strong">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-md-6" style="color: #323232">
+                                                    <i class="fas fa-search pt-5" style="font-size: 4.5vw !important"></i>
+                                                    <h1 class="p-2 h-responsive">Detail</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </router-link>
                                 </div>
                                 <div class="card-body text-center">
+                                    <p class="card-text font-weight-bold indigo-text py-2">{{bg.tittle}}</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
+          </div>
         </div>
+      </div>
+
     </div>
-	`
+    <!-- /.row -->
+
+  </div>
+        </div>
+    `
 }
