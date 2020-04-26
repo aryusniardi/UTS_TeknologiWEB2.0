@@ -1,5 +1,5 @@
 var store_blog = new Vuex.Store({
-	strict: true,
+    strict: true,
     state: {
         blogs:[],
     },
@@ -40,22 +40,22 @@ var store_blog = new Vuex.Store({
 })
 
 export var blog = {
-	store_blog,
-	computed: {
-		blogs(){
-			return store_blog.getters.blogs;
-		}
-	},
-	created(){
-		store_blog.dispatch('getBlogs').then((response) => {
-           	console.log('result', response)
-     	}).catch((error) => {
-         	console.log('error', error)
-       	})
-	},
-		template: `
-			<div>
-				<section id="gallery">
+    store_blog,
+    computed: {
+        blogs(){
+            return store_blog.getters.blogs;
+        }
+    },
+    created(){
+        store_blog.dispatch('getBlogs').then((response) => {
+            console.log('result', response)
+        }).catch((error) => {
+            console.log('error', error)
+        })
+    },
+        template: `
+            <div>
+                <section id="gallery">
 
                 <!-- Heading 
                 <h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
@@ -65,13 +65,17 @@ export var blog = {
 
                     <!--Grid column-->
                     <div class="col-md-6 mb-4">
+                    <router-link :to="'/detail_blog/' + blog.id">
                       <img class="d-block w-100 rounded" :src="'assets/image/blog/'+ blog.image">
+                      <router-link>
                     </div>
                     <!--Grid column-->
 
                     <!--Grid column-->
                     <div class="col-md-6">
+                        
                         <h4 class="mb-3"><strong>{{blog.tittle}}</strong></h4>
+                        
                         <small class="text-muted">{{ blog.author }} / {{ blog.date }}</small>
 
                         <p class="grey-text text-justify">{{blog.content1}}</p>
@@ -84,6 +88,6 @@ export var blog = {
                 <!--Grid row-->
 
             </section>
-			</div>
-		`
+            </div>
+        `
 }

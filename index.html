@@ -30,6 +30,7 @@
             import { navbar } from './js/components/navbar.js';
             import { home } from './js/components/pages/home.js';
             import { blog } from './js/components/pages/blog.js';
+            import { detail_blog } from './js/components/pages/detail_blog.js';
             import { brands } from './js/components/pages/brands.js';
             import { collection } from './js/components/pages/collections.js';
             import { product } from './js/components/pages/product.js';
@@ -46,6 +47,7 @@
                 {path: '/blog', component: blog},
                 {path: '/product/:id', component: product, props:true},
                 {path: '/payment/:id', component: payment, props:true},
+                {path: '/detail_blog/:id', component: detail_blog, props:true},
                 {path: '*', redirect: '/'}
 
             ];
